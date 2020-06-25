@@ -10,54 +10,54 @@ const question = [
 {
   type:'input',
   name:'username',
-  message:'[>] Insert Username:',
+  message:'[>] Masukkan Username:',
   validate: function(value){
-    if(!value) return 'Can\'t Empty';
+    if(!value) return 'Tidak boleh kosong';
     return true;
   }
 },
 {
   type:'password',
   name:'password',
-  message:'[>] Insert Password:',
+  message:'[>] Masukkan Password:',
   mask:'*',
   validate: function(value){
-    if(!value) return 'Can\'t Empty';
+    if(!value) return 'Tidak boleh kosong';
     return true;
   }
 },
 {
   type:'input',
   name:'hastag',
-  message:'[>] Insert Hashtag (Without #)(Use [|] if more than 1)(jangan dispasi):',
+  message:'[>] Masukkan Hashtag (Tanpa #)(Gunakan [|] jika lebih dari 1)(jangan dispasi):',
   validate: function(value){
-    if(!value) return 'Can\'t Empty';
+    if(!value) return 'Tidak boleh kosong';
     return true;
   }
 },
 {
   type:'input',
   name:'text',
-  message:'[>] Insert Text Comment (Use [|] if more than 1):',
+  message:'[>] Masukkan Text Comment (Gunakan [|] jika lebih dari 1):',
   validate: function(value){
-    if(!value) return 'Can\'t Empty';
+    if(!value) return 'Tidak boleh kosong';
     return true;
   }
 },
 {
   type:'input',
   name:'mysyntx',
-  message:'[>] Input Total of Target You Want (ITTYW):',
+  message:'[>] Masukkan Total Target yang kamu mau(ITTYW):',
   validate: function(value){
     value = value.match(/[0-9]/);
     if (value) return true;
-    return 'Use Number Only!';
+    return 'Hanya Gunakan Angka!';
   }
 },
 {
   type:'input',
   name:'sleep',
-  message:'[>] Insert Sleep (In MiliSeconds):',
+  message:'[>] Masukkan Sleeptime (In MiliSeconds):',
   validate: function(value){
     value = value.match(/[0-9]/);
     if (value) return true;
@@ -131,13 +131,13 @@ const doAction = async (session, params, text) => {
 }
 
 const doMain = async (account, hastag, sleep, text, mysyntx) => {
-  console.log(chalk`{yellow \n [?] Try to Login . . .}`)
+  console.log(chalk`{yellow \n [?] Mencoba Login . . .}`)
   account = await doLogin(account);
-  console.log(chalk`{green [!] Login Success!}`)
+  console.log(chalk`{green [!] Login Berhasil!}`)
    try {
   const ranhastag = hastag[Math.floor(Math.random() * hastag.length)];
   const feed = new Client.Feed.TaggedMedia(account.session, ranhastag);
-  console.log(chalk`{cyan  [?] Try to Follow, Like and Comment All Account In Hashtag: #${ranhastag}}`);
+  console.log(chalk`{cyan  [?] Mencoba untuk Follow, Like and Comment Semua akun dalam Hashtag: #${ranhastag}}`);
     var cursor;
     var count = 0;
     console.log(chalk`{yellow \n [#][>] START WITH RATIO ${mysyntx}/${sleep} MiliSeconds [<][#] \n}`)
@@ -168,16 +168,17 @@ const doMain = async (account, hastag, sleep, text, mysyntx) => {
 console.log(chalk`
   {bold.cyan
   —————————————————— [INFORMATION] ————————————————————
-
   [?] {bold.green FAH | Using Hastag Media Target!}
+  [?] {bold.blue SUBSCRIBE YOUTUBE} {bold.cyan Daud Sanjaya}
 
   ——————————————————  [THANKS TO]  ————————————————————
+  [✓] SCRIPT BY DAUD SANJAYA (daudsti11@gmail.com)
   [✓] CODE BY CYBER SCREAMER CCOCOT (ccocot@bc0de.net)
   [✓] FIXING & TESTING BY SYNTAX (@officialputu_id)
   [✓] CCOCOT.CO | BC0DE.NET | NAONLAH.NET | WingkoColi
   [✓] SGB TEAM REBORN | Zerobyte.id | ccocot@bc0de.net 
   —————————————————————————————————————————————————————
-  What's new?
+  Apa yang baru?
   1. Input Target/delay Manual (ITTYW)
   —————————————————————————————————————————————————————}
       `);
