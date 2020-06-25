@@ -10,26 +10,26 @@ const User = [
     {
         type:'input',
         name:'username',
-        message:'[>] Insert Username:',
+        message:'[>] Masukkan Username:',
 	validate: function(value){
-		if(!value) return 'Can\'t Empty';
+		if(!value) return 'Tidak boleh kosong';
 		return true;
 	}
     },
     {
         type:'password',
         name:'password',
-        message:'[>] Insert Password:',
+        message:'[>] Masukkan Password:',
         mask:'*',
 	validate: function(value){
-		if(!value) return 'Can\'t Empty';
+		if(!value) return 'Tidak boleh kosong';
 		return true;
 	}
     },
     {
         type:'input',
         name:'sleep',
-        message:'[>] Insert Sleep (MiliSeconds):',
+        message:'[>] Masukkan Sleeptime (MiliSeconds):',
         validate: function(value){
             value = value.match(/[0-9]/);
             if (value) return true;
@@ -58,20 +58,20 @@ const Login = async function(User){
 const Like = async function(session,media){
     try {
         if (media.params.hasLiked) {
-           return chalk`{bold.blue Already Liked}`;
+           return chalk`{bold.blue Sudah Di Like}`;
         }
         await Client.Like.create(session, media.id);
-        return chalk`{bold.green Success Like}`;
+        return chalk`{bold.green Sukses Like}`;
     } catch (err) {
-        return chalk`{bold.red Failed Like}`;
+        return chalk`{bold.red Gagal Like}`;
     }
 }
 
 const Excute = async function(User, sleep){
     try {
-        console.log(chalk`\n{yellow [?] Try to Login . . .}`);
+        console.log(chalk`\n{yellow [?] Mencoba Login . . .}`);
         const doLogin = await Login(User);
-        console.log(chalk`{green [!] Login Succsess}, {yellow [?] Try Like All Media in Feed / Timeline . . .\n}`);
+        console.log(chalk`{green [!] Login Berhasil}, {yellow [?] Mencoba Like semua Media di Feed / Timeline . . .\n}`);
         const feed = new Client.Feed.Timeline(doLogin.session);
         var cursor;
         do {
@@ -98,7 +98,10 @@ console.log(chalk`
 
   [?] {bold.green BOTLIKEv1 | Like/Love TL IG *SET SLEEP!}
 
+  [?] {bold.blue SUBSCRIBE YOUTUBE} {bold.cyan Daud Sanjaya}
+
   ——————————————————  [THANKS TO]  ————————————————————
+  [✓] SCRIPT BY DAUD SANJAYA (daudsti11@gmail.com)
   [✓] CODE BY CYBER SCREAMER CCOCOT (ccocot@bc0de.net)
   [✓] FIXING & TESTING BY SYNTAX (@officialputu_id)
   [✓] CCOCOT.CO | BC0DE.NET | NAONLAH.NET | WingkoColi
