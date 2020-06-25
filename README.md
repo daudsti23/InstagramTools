@@ -1,46 +1,51 @@
-# ![Image](ig_logo.png) Instagram NODE JS API V1.1
+# ![Image](ig_logo.png) Instagram Tools NODE JS API V1.1
 <br/>
 
-## How to install (DEFAULT or BASIC USAGE)
-	* git clone https://github.com/ikiganteng/bot-igeh.git
+## SUPPORT ME:
+    * Subscribe Youtube Daud Sanjaya
+    * Follow IG @jasa.edit.photo.murah
+<br/>
+
+## Untuk TERMUX :
+	* Install Termux (PlayStore)
+	* Open Termux dan tunggu proses instalasi di Termux.
+        * pkg update && pkg upgrade
+	* pkg install git
+	* pkg install nodejs
+	* git clone https://github.com/daudsti23/InstagramTools
+	* cd InstagramTools
+	* unzip node_modules.zip
+	* npm install https://github.com/huttarichard/instagram-private-api
+	* npm audit fix
+	* ls
+	* Lalu pilih Tool yang ingin kamu gunakan!
+	* node filename
+<br/>
+
+## Cara Install (DEFAULT or BASIC USAGE)
+	* git clone https://github.com/daudsti23/InstagramTools.git
 	* cd bot-igeh
 	* unzip node_modules.zip
 	* npm install https://github.com/huttarichard/instagram-private-api
 	* npm audit fix
 	* ls
-	* Then select the tool you want to use!
+	* Kemudian pilih tool yang kamu inginkan!
 	* node filename
 <br/>
 
 ## For PC/Laptop ONLY:
-	* Download GIT for Windows (https://git-scm.com/download/) *Choose WIN & 32bit/64bit
-	* Download NodeJS (https://nodejs.org/en/download/) *Choose .msi & 32bit/64bit
-	* INSTALL GIT for Windows & NodeJS
-	* Download File on Github (https://github.com/ikiganteng/bot-igeh.git)
-	* Extract File bot-igeh and enter the folder
-	* Right Click on Mouse, Then Select "Git Bash Here" (Make sure you are in the bot-igeh folder!!!)
+	* Download GIT untuk Windows (https://git-scm.com/download/) *Pilih WIN & 32bit/64bit
+	* Download NodeJS (https://nodejs.org/en/download/) *Pilih .msi & 32bit/64bit
+	* INSTALL GIT untuk Windows & NodeJS
+	* Download File dari Github (https://github.com/daudsti23/InstagramTools.git)
+	* Extract File InstagramTools and enter the folder
+	* Right Click on Mouse, Then Select "Git Bash Here" (Make sure you are in the InstagramTools folder!!!)
 	* Then type: unzip node_modules.zip
 	* npm install https://github.com/huttarichard/instagram-private-api
 	* npm audit fix
 	* To View The Contents Of a folder in bash, type: "ls" (without "")
 	* Then select the tool you want to use!
 	* node filename
-<br/>
-
-## For TERMUX ONLY:
-	* Install Termux (PlayStore)
-	* Open Termux and Wait for Automatic Install of Termux.
-	* pkg install git
-	* pkg install nodejs
-	* git clone https://github.com/ikiganteng/bot-igeh.git
-	* cd bot-igeh
-	* unzip node_modules.zip
-	* npm install https://github.com/huttarichard/instagram-private-api
-	* npm audit fix
-	* ls
-	* Then select the tool you want to use!
-	* node filename
-	
 <br/>
 
 ## For CodeAnywhere/VPS (Centos):
@@ -52,7 +57,7 @@
 	* sudo yum -y install nodejs
 
 	=========== Basic Usage ==============
-	* git clone https://github.com/ikiganteng/bot-igeh.git
+	* git clone https://github.com/daudsti23/InstagramTools.git
 	* cd bot-igeh
 	* unzip node_modules.zip
 	* npm install https://github.com/huttarichard/instagram-private-api
@@ -90,8 +95,8 @@
 	* nvm install 10.7.0
 
 	=========== Basic Usage ==============
-	* git clone https://github.com/ikiganteng/bot-igeh.git
-	* cd bot-igeh
+	* git clone https://github.com/daudsti23/InstagramTools.git
+	* cd InstagramTools
 	* unzip node_modules.zip
 	* nvm use 10.7.0
 	* npm install https://github.com/huttarichard/instagram-private-api
@@ -103,27 +108,27 @@
 <br/>
 
 ## INFORMATION:
-	* dellallphoto			"DELETE ALL POST IG"			(WORK & TESTED)
-	* fl				"SELECTED WITH TARGET IG"		(WORK & TESTED)
-	* fah				"SELECTED WITH HASTAG IG"		(WORK & TESTED)
-	* fftsleep			"SELECTED WITH TARGET IG"		(WORK & TESTED)
-	* fftdm				"SELECTED WITH TARGET IG"		(WORK & TESTED)
-	* fftauto			"SELECTED WITH TARGET IG"		(WORK & TESTED)
-	* fft				"SELECTED WITH TARGET IG"		(WORK & TESTED)
-	* fftold			"SELECTED WITH TARGET IG"		(WORK & TESTED)
-	* fftasli			"SELECTED WITH TARGET IG"		(WORK & TESTED)
-	* flaauto			"SELECTED WITH LOCATION IG"		(WORK & TESTED)
-	* flmauto			"SELECTED WITH MEDIA IG"		(WORK & TESTED)
-	* unfollall			"UNFOLOW ALL FOLLOWING IG"		(WORK & TESTED)
-	* unfollnotfollback		"UNFOLLOW NOT FOLLOWBACK IG"	 	(WORK & TESTED)
-	* botlike			"LIKE/LOVE TIMELINE IG"			(WORK & TESTED)
-	* botlike2			"LIKE/LOVE TIMELINE IG"			(WORK & TESTED)
-	* bomlike			"BOM LIKE POST TARGET"			(WORK & TESTED)
-	* bomkomen			"BOM KOMEN POST TARGET"			(WORK & TESTED)
-	* likekomen			"SELECTED WITH POST TARGET"		(WORK & TESTED)
-	* komenlike			"SELECTED WITH HASTAG TARGET"		(WORK & TESTED)
-	* cdl				"SELECTED WITH TARGET IG"		(WORK & TESTED)
-	* cek				"CHECK USERNAME IG TARGET"		(WORK & TESTED)
+	* dellallphoto			"HAPUS SEMUA POST IG"			   (WORK & TESTED)
+	* fl				"DIPILIH DARI TARGET IG"		   (WORK & TESTED)
+	* fah				"DIPILIH DARI HASTAG IG"		   (WORK & TESTED)
+	* fftsleep			"DIPILIH DARI TARGET IG"		   (WORK & TESTED)
+	* fftdm				"DIPILIH DARI TARGET IG"		   (WORK & TESTED)
+	* fftauto			"DIPILIH DARI TARGET IG"		   (WORK & TESTED)
+	* fft				"DIPILIH DARI TARGET IG"		   (WORK & TESTED)
+	* fftold			"DIPILIH DARI TARGET IG"		   (WORK & TESTED)
+	* fftasli			"DIPILIH DARI TARGET IG"		   (WORK & TESTED)
+	* flaauto			"DIPILIH DARI LOKASI IG"		   (WORK & TESTED)
+	* flmauto			"DIPILIH DARI MEDIA IG"		           (WORK & TESTED)
+	* unfollall			"UNFOLOW SEMUA AKUN IG YANG KAMU FOLLOW"   (WORK & TESTED)
+	* unfollnotfollback		"UNFOLLOW YANG TIDAK FOLLOWBACK IG"        (WORK & TESTED)
+	* botlike			"LIKE/LOVE TIMELINE IG"			   (WORK & TESTED)
+	* botlike2			"LIKE/LOVE TIMELINE IG"			   (WORK & TESTED)
+	* bomlike			"BOM LIKE POST TARGET"			   (WORK & TESTED)
+	* bomkomen			"BOM KOMEN POST TARGET"			   (WORK & TESTED)
+	* likekomen			"DIPILIH DARI POST TARGET"		   (WORK & TESTED)
+	* komenlike			"DIPILIH DARI HASTAG TARGET"		   (WORK & TESTED)
+	* cdl				"DIPILIH DARI TARGET IG"		   (WORK & TESTED)
+	* cek				"CHECK USERNAME IG TARGET"		   (WORK & TESTED)
 
 
 <br/>
@@ -144,6 +149,7 @@
 <br/>
 
 ## SPECIAL THANKS TO:
+        * Script by Daud Sanjaya (daudsti11@gmail.com)
 	* Code by Ccocot (ccocot@bc0de.net)
 	* Fixing and Testing by Putu Syntax
 	* SGB TEAM REBORN
