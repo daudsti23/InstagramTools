@@ -9,19 +9,19 @@ const User = [
 {
     type:'input',
     name:'username',
-    message:'[>] Insert Username:',
+    message:'[>] Masukkan Username:',
     validate: function(value){
-      if(!value) return 'Can\'t Empty';
+      if(!value) return 'Tidak boleh kosong';
       return true;
   }
 },
 {
     type:'password',
     name:'password',
-    message:'[>] Insert Password:',
+    message:'[>] Masukkan Password:',
     mask:'*',
     validate: function(value){
-      if(!value) return 'Can\'t Empty';
+      if(!value) return 'Tidak boleh kosong';
       return true;
   }
 }
@@ -81,9 +81,9 @@ const Like = async function(session,media){
     try {
         if (media.params.hasLiked === false){
             const Like = await Client.Like.create(session, media.params.id);
-            console.log(chalk`[{bold.cyan ${media.id}}] Username : ${media.params.user.username} => {bold.green Liked}`);
+            console.log(chalk`[{bold.cyan ${media.id}}] Username : ${media.params.user.username} => {bold.green Di Like}`);
         } else {
-            console.log(chalk`[{bold.cyan ${media.id}}] Username : ${media.params.user.username} => {bold.red Already Liked}`);
+            console.log(chalk`[{bold.cyan ${media.id}}] Username : ${media.params.user.username} => {bold.red Sudah Di Like}`);
         }
     } catch (err) {
         return Promise.reject(err);
@@ -103,10 +103,12 @@ const Excute = async function(User){
 console.log(chalk`
   {bold.cyan
   —————————————————— [INFORMATION] ————————————————————
-
   [?] {bold.green BOTLIKEv2 | Like/Love TL IG *AUTO!}
+  
+  [?] {bold.blue SUBSCRIBE YOUTUBE} {bold.cyan Daud Sanjaya}
 
   ——————————————————  [THANKS TO]  ————————————————————
+  [✓] SCRIPT BY DAUD SANJAYA (daudsti11@gmail.com)
   [✓] CODE BY CYBER SCREAMER CCOCOT (ccocot@bc0de.net)
   [✓] FIXING & TESTING BY SYNTAX (@teamsyntaxid)
   [✓] CCOCOT.CO | BC0DE.NET | NAONLAH.NET | WingkoColi
