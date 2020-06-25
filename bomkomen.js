@@ -152,7 +152,7 @@ const Excute = async function(User, TargetUsername, Text, sleep, mysyntx){
 
 		/** MENCOBA MENGHAPUS SEMUA MEDIA **/
 		for (let i = 0; i < getMedia.length; i++) {
-			console.log('[?] Mencoba untuk Like Photo/Delay \n')
+			console.log('[?] Mencoba untuk Komen Photo/Delay \n')
 			await Promise.all(getMedia[i].map(async(media) => {
 				var ranText = Text[Math.floor(Math.random() * Text.length)];
                 const ngeDo = await ngeComment(doLogin.session, media.id, ranText)
