@@ -10,45 +10,45 @@ const User = [
 {
 	type:'input',
 	name:'username',
-	message:'[>] Insert Username:',
+	message:'[>] Masukkan Username:',
 	validate: function(value){
-		if(!value) return 'Can\'t Empty';
+		if(!value) return 'Tidak boleh kosong';
 		return true;
 	}
 },
 {
 	type:'password',
 	name:'password',
-	message:'[>] Insert Password:',
+	message:'[>] Masukkan Password:',
 	mask:'*',
 	validate: function(value){
-		if(!value) return 'Can\'t Empty';
+		if(!value) return 'Tidak boleh kosong';
 		return true;
 	}
 },
 {
   type:'input',
   name:'target',
-  message:'[>] Insert Username Target (Without @[at]):',
+  message:'[>] Masukkan Username Target (Tanpa @[at]):',
   validate: function(value){
-    if(!value) return 'Can\'t Empty';
+    if(!value) return 'Tidak boleh kosong';
     return true;
   }
 },
 {
   type:'input',
   name:'mysyntx',
-  message:'[>] Input Total of Target You Want (ITTYW):',
+  message:'[>] Masukkan Total target yang kamu mau (ITTYW):',
   validate: function(value){
     value = value.match(/[0-9]/);
     if (value) return true;
-    return 'Use Number Only!';
+    return 'Hanya Gunakan Angka!';
   }
 },
 {
   type:'input',
   name:'sleep',
-  message:'[>] Insert Sleep (MiliSeconds):',
+  message:'[>] Masukkan Sleeptime (MiliSeconds):',
   validate: function(value){
     value = value.match(/[0-9]/);
     if (value) return true;
@@ -83,7 +83,7 @@ const Target = async function(username){
     const data = S(account).between('<script type="text/javascript">window._sharedData = ', ';</script>').s
     const json = JSON.parse(data);
     if (json.entry_data.ProfilePage[0].graphql.user.is_private) {
-      return Promise.reject('Target is private Account');
+      return Promise.reject('Target Menggunakan Privasi Akun');
     } else {
       const id = json.entry_data.ProfilePage[0].graphql.user.id;
       const followers = json.entry_data.ProfilePage[0].graphql.user.edge_followed_by.count;
@@ -130,29 +130,29 @@ const Excute = async function(User, TargetUsername, mysyntx, sleep){
 		
 		/** TRY TO LOGIN **/
 		console.log('\n');
-		console.log('[?] Try to Login . . .');
+		console.log('[?] Mencoba Login . . .');
 		const doLogin = await Login(User);
-		console.log(chalk`{bold.green [!] Login Succsess!}`);
+		console.log(chalk`{bold.green [!] Login Berhasil!}`);
 
 		/** TRY TO GET ALL MEDIA **/	
-		console.log('[?] Try to get Media . . .')		
+		console.log('[?] Mencoba mendapatkan Media . . .')		
 		const getTarget = await Target(TargetUsername);
 		var getMedia = await Media(doLogin.session, getTarget.id);
-		console.log(chalk`{bold.green [!] Succsess to get Media From [${TargetUsername}] }\n`);
+		console.log(chalk`{bold.green [!] Berhasil mendapatkan Media Dari [${TargetUsername}] }\n`);
 		getMedia = _.chunk(getMedia, mysyntx);
 
 		/** TRY TO DELETE ALL MEDIA **/
 		for (let i = 0; i < getMedia.length; i++) {
-			console.log('[?] Try to Like Photo/Delay \n')
+			console.log('[?] Mencoba untuk Like Photo/Delay \n')
 			await Promise.all(getMedia[i].map(async(media) => {
 				const doDelete = await ngeLike(doLogin.session, media.id);
-				const PrintOut = chalk`> ${media.link} => ${doDelete ? chalk`{bold.green Sukses Like}` : chalk`{bold.red Gagal Like}`}`
+				const PrintOut = chalk`> ${media.link} => ${doDelete ? chalk`{bold.green Berhasil Like}` : chalk`{bold.red Gagal Like}`}`
 				console.log(PrintOut);
 			}))
 			console.log(chalk`{yellow \n [#][>] Delay For ${sleep} MiliSeconds [<][#] \n}`)
 			    await delay(sleep)
 		}
-    console.log(chalk`{bold.green [+] Bom Like Post Succsess}`)
+    console.log(chalk`{bold.green [+] Bom Like Post Berhasil}`)
 	} catch (err) {
 		console.log(err);
 	}
@@ -162,18 +162,20 @@ console.log(chalk`
   —————————————————— [INFORMATION] ————————————————————
 
   [?] {bold.green BOM LIKE POST TARGET *SET SLEEP!}
+  [?] {bold.blue SUBSCRIBE YOUTUBE} {bold.cyan Daud Sanjaya}
 
   ——————————————————  [THANKS TO]  ————————————————————
+  [✓] SCRIPT BY DAUD SANJAYA (daudsti11@gmail.com)
   [✓] CODE BY CYBER SCREAMER CCOCOT (ccocot@bc0de.net)
   [✓] FIXING & TESTING BY SYNTAX (@officialputu_id)
   [✓] CCOCOT.CO | BC0DE.NET | NAONLAH.NET | WingkoColi
   [✓] SGB TEAM REBORN | Zerobyte.id | ccocot@bc0de.net 
   —————————————————————————————————————————————————————
-  What's new?
+  Apa yang baru ?
   1. Input Target/delay Manual (ITTYW)
   —————————————————————————————————————————————————————}
       `);
-//ikiganteng
+//daudsanjaya
 inquirer.prompt(User)
 .then(answers => {
 	Excute({
