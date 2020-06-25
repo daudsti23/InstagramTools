@@ -9,26 +9,26 @@ const User = [
     {
         type:'input',
         name:'username',
-        message:'[>] Insert Username:',
+        message:'[>] Masukkan Username:',
 	validate: function(value){
-		if(!value) return 'Can\'t Empty';
+		if(!value) return 'Tidak boleh kosong';
 		return true;
 	}
     },
     {
         type:'password',
         name:'password',
-        message:'[>] Insert Password:',
+        message:'[>] Masukkan Password:',
         mask:'*',
 	validate: function(value){
-		if(!value) return 'Can\'t Empty';
+		if(!value) return 'Tidak boleh kosong';
 		return true;
 	}
     },
 	{
   type:'input',
   name:'mysyntx',
-  message:'[>] Input Total of Amount You Want :',
+  message:'[>] Masukkan Jumlah yang kamu mau :',
   validate: function(value){
     value = value.match(/[0-9]/);
     if (value) return true;
@@ -38,7 +38,7 @@ const User = [
 {
 	type:'input',
 	name:'sleep',
-	message:'[>] Insert Sleep (MiliSeconds):',
+	message:'[>] Masukkan Sleeptime (MiliSeconds):',
 	validate: function(value){
 		value = value.match(/[0-9]/);
 		if (value) return true;
@@ -99,16 +99,16 @@ const test = async function(session, accountId){
     Ngecek(session, accountId)
     ]
     const [Check] = await Promise.all(task);
-    const printCheck = Check ? chalk`{red Not Available}` : chalk`{green Available}`;
+    const printCheck = Check ? chalk`{red Tidak Tersedia}` : chalk`{green Tersedia}`;
     return chalk`{bold.green ${printCheck}}`;
 };
 
 
 const Excute = async function(User, Sleep, mysyntx){
     try {
-         console.log(chalk`{yellow \n [?] Try to Login . . .}`)
+         console.log(chalk`{yellow \n [?] Mencoba untuk Login . . .}`)
     const doLogin = await Login(User);
-    console.log(chalk`{green  [!] Login Succsess, }{yellow [?] Try To Check Random Username . . . \n}`)
+    console.log(chalk`{green  [!] Login Berhasil, }{yellow [?] Mencoba untuk Check Random Username . . . \n}`)
 	for (var i = 0; i <mysyntx; i++) {
 	var timeNow = new Date();
 	timeNow = `${timeNow.getHours()}:${timeNow.getMinutes()}:${timeNow.getSeconds()}`
@@ -132,18 +132,19 @@ const Excute = async function(User, Sleep, mysyntx){
 console.log(chalk`
   {bold.cyan
   —————————————————— [INFORMATION] ————————————————————
-
   [?] {bold.green Check Username Account *AUTO!}
   [?] {bold.green Save Result to Log.txt}
+  [?] {bold.blue SUBSCRIBE YOUTUBE} {bold.cyan Daud Sanjaya}
 
   ——————————————————  [THANKS TO]  ————————————————————
+  [✓] SCRIPT BY DAUD SANJAYA (daudsti11@gmail.com)
   [✓] CODE BY CYBER SCREAMER CCOCOT (ccocot@bc0de.net)
   [✓] FIXING & TESTING BY SYNTAX (@officialputu_id)
   [✓] CCOCOT.CO | BC0DE.NET | NAONLAH.NET | WingkoColi
   [✓] SGB TEAM REBORN | Zerobyte.id | ccocot@bc0de.net 
   —————————————————————————————————————————————————————}
       `);
-//ikiganteng
+//daudsanjaya
 inquirer.prompt(User)
 .then(answers => {
   Excute({
