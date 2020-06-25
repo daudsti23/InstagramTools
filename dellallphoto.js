@@ -10,26 +10,26 @@ const User = [
 {
 	type:'input',
 	name:'username',
-	message:'[>] Insert Username:',
+	message:'[>] Masukkan Username:',
 	validate: function(value){
-		if(!value) return 'Can\'t Empty';
+		if(!value) return 'Tidak boleh kosong';
 		return true;
 	}
 },
 {
 	type:'password',
 	name:'password',
-	message:'[>] Insert Password:',
+	message:'[>] Masukkan Password:',
 	mask:'*',
 	validate: function(value){
-		if(!value) return 'Can\'t Empty';
+		if(!value) return 'Tidak boleh kosong';
 		return true;
 	}
 },
 {
 	type:'input',
 	name:'sleep',
-	message:'[>] Insert Sleep (MiliSeconds):',
+	message:'[>] Masukkan Sleeptime (MiliSeconds):',
 	validate: function(value){
 		value = value.match(/[0-9]/);
 		if (value) return true;
@@ -91,19 +91,19 @@ const Excute = async function(User,sleep){
 	try {
 		
 		/** TRY TO LOGIN **/
-		console.log('\n [?] Try to Login . . .');
+		console.log('\n [?] Mencoba Login . . .');
 		const doLogin = await Login(User);
-		console.log(chalk`{bold.green [!] Login Succsess!}`);
+		console.log(chalk`{bold.green [!] Login Berhasil!}`);
 
 		/** TRY TO GET ALL MEDIA **/		
-		console.log('[?] Try to get Media . . .')
+		console.log('[?] Mencoba mendapatkan Media . . .')
 		var getMedia = await Media(doLogin.session, doLogin.account.id);
-		console.log(chalk`{bold.green [!] Succsess to get Media. Media Length : ${getMedia.length}}\n`);
+		console.log(chalk`{bold.green [!] Berhasil mendapatkan Media. Media Length : ${getMedia.length}}\n`);
 		getMedia = _.chunk(getMedia, 10);
 
 		/** TRY TO DELETE ALL MEDIA **/
 		for (let i = 0; i < getMedia.length; i++) {
-			console.log('[?] Try to Delete 10 Photo/Delay \n')
+			console.log('[?] Mencoba Hapus 10 Photo/Delay \n')
 			await Promise.all(getMedia[i].map(async(media) => {
 				const doDelete = await Delete(doLogin.session, media.id);
 				const PrintOut = chalk`> ${media.link} => ${doDelete ? chalk`{bold.green Sukses}` : chalk`{bold.red Gagal}`}`
@@ -120,10 +120,11 @@ const Excute = async function(User,sleep){
 console.log(chalk`
   {bold.cyan
   —————————————————— [INFORMATION] ————————————————————
-
   [?] {bold.green MASS DELETE ALL PHOTO IG *SET SLEEP!}
+  [?] {bold.blue SUBSCRIBE YOUTUBE} {bold.cyan Daud Sanjaya}
 
   ——————————————————  [THANKS TO]  ————————————————————
+  [✓] SCRIPT BY DAUD SANJAYA (daudsti11@gmail.com)
   [✓] CODE BY CYBER SCREAMER CCOCOT (ccocot@bc0de.net)
   [✓] FIXING & TESTING BY SYNTAX (@teamsyntaxid)
   [✓] CCOCOT.CO | BC0DE.NET | NAONLAH.NET | WingkoColi
