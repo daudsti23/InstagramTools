@@ -10,54 +10,54 @@ const User = [
 {
 	type:'input',
 	name:'username',
-	message:'[>] Insert Username:',
+	message:'[>] Masukkan Username:',
 	validate: function(value){
-		if(!value) return 'Can\'t Empty';
+		if(!value) return 'Tidak boleh kosong';
 		return true;
 	}
 },
 {
 	type:'password',
 	name:'password',
-	message:'[>] Insert Password:',
+	message:'[>] Masukkan Password:',
 	mask:'*',
 	validate: function(value){
-		if(!value) return 'Can\'t Empty';
+		if(!value) return 'Tidak boleh kosong';
 		return true;
 	}
 },
 {
 	type:'input',
 	name:'target',
-	message:'[>] Insert Link Media:',
+	message:'[>] Masukkan Link Media:',
 	validate: function(value){
-		if(!value) return 'Can\'t Empty';
+		if(!value) return 'Tidak boleh kosong';
 		return true;
 	}
 },
 {
 	type:'input',
 	name:'text',
-	message:'[>] Insert Text Comment (Use [|] if more than 1):',
+	message:'[>] Masukkan Text Comment (Gunakan [|] jika lebih dari 1):',
 	validate: function(value){
-		if(!value) return 'Can\'t Empty';
+		if(!value) return 'Tidak boleh kosong';
 		return true;
 	}
 },
 {
   type:'input',
   name:'mysyntx',
-  message:'[>] Input Total of Target You Want (ITTYW):',
+  message:'[>] Input Total Target yang kamu mau (ITTYW):',
   validate: function(value){
     value = value.match(/[0-9]/);
     if (value) return true;
-    return 'Use Number Only!';
+    return 'Hanya Gunakan Angka!';
   }
 },
 {
 	type:'input',
 	name:'sleep',
-	message:'[>] Insert Sleep (MiliSeconds):',
+	message:'[>] Masukkan Sleeptime (MiliSeconds):',
 	validate: function(value){
 		value = value.match(/[0-9]/);
 		if (value) return true;
@@ -139,7 +139,7 @@ const CommentAndLike = async function(session, accountId, text){
 
 	if (result.length > 0) {
 		if (result[0].params.hasLiked) {
-        return chalk`{bold.blue Already Follow,Liked & Comment}`;
+        return chalk`{bold.blue Sudah di Follow,Liked & Comment}`;
         }
 		const task = [
 		ngefollow(session, accountId),
@@ -176,13 +176,13 @@ const Followers = async function(session, id){
 
 const Excute = async function(User, TargetUsername, Text, Sleep, mysyntx){
 	try {
-		console.log(chalk`{yellow \n [?] Try to Login . . .}`)
+		console.log(chalk`{yellow \n [?] Mencoba Login . . .}`)
 		const doLogin = await Login(User);
-		console.log(chalk`{green  [!] Login Succsess, }{yellow [?] Try To Get Link & Media ID Target . . .}`)
+		console.log(chalk`{green  [!] Login Berhasil, }{yellow [?] Mencari Link & Media ID Target . . .}`)
 		const getTarget = await Target(TargetUsername);
 		console.log(chalk`{green  [!] ${TargetUsername} [${getTarget}]}`);
 		const getFollowers = await Followers(doLogin.session, doLogin.account.id);
-		console.log(chalk`{cyan  [?] Try to Follow, Comment, and Like Followers Target . . . \n}`)
+		console.log(chalk`{cyan  [?] Mencoba untuk Follow, Comment, and Like Followers Target . . . \n}`)
 		var TargetResult = await Client.Media.likers(doLogin.session, getTarget);
 		TargetResult = _.chunk(TargetResult, mysyntx);
 		for (var i = 0; i < TargetResult.length; i++) {
@@ -194,7 +194,7 @@ const Excute = async function(User, TargetUsername, Text, Sleep, mysyntx){
 					const ngeDo = await CommentAndLike(doLogin.session, akun.id, ranText)
 					console.log(chalk`[{magenta ${timeNow}}] {bold.green [>]} @${akun.params.username} => ${ngeDo}`)
 				} else {
-					console.log(chalk`[{magenta ${timeNow}}] {bold.yellow [SKIPPED]}${akun.params.username} => PRIVATE OR ALREADY FOLLOWED`)
+					console.log(chalk`[{magenta ${timeNow}}] {bold.yellow [SKIPPED]}${akun.params.username} => PRIVATE ATAU SUDAH DI FOLLOW`)
 				}
 			}));
 			console.log(chalk`{yellow \n [#][>] Delay For ${Sleep} MiliSeconds [<][#] \n}`);
@@ -208,20 +208,21 @@ const Excute = async function(User, TargetUsername, Text, Sleep, mysyntx){
 console.log(chalk`
   {bold.cyan
   —————————————————— [INFORMATION] ————————————————————
-
   [?] {bold.green FLMauto | Using Media/Link Target}
+  [?] {bold.blue SUBSCRIBE YOUTUBE} {bold.cyan Daud Sanjaya}
 
   ——————————————————  [THANKS TO]  ————————————————————
+  [✓] SCRIPT BY DAUD SANJAYA (daudsti11@gmail.com)
   [✓] CODE BY CYBER SCREAMER CCOCOT (ccocot@bc0de.net)
   [✓] FIXING & TESTING BY SYNTAX (@officialputu_id)
   [✓] CCOCOT.CO | BC0DE.NET | NAONLAH.NET | WingkoColi
   [✓] SGB TEAM REBORN | Zerobyte.id | ccocot@bc0de.net 
   —————————————————————————————————————————————————————
-  What's new?
+  Apa yang baru?
   1. Input Target/delay Manual (ITTYW)
   —————————————————————————————————————————————————————}
       `);
-//ikiganteng
+//daudsanjaya
 inquirer.prompt(User)
 .then(answers => {
 	var text = answers.text.split('|');
