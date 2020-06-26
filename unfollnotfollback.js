@@ -9,36 +9,36 @@ const User = [
 {
 	type:'input',
 	name:'username',
-	message:'[>] Insert Username:',
+	message:'[>] Masukkan Username:',
 	validate: function(value){
-		if(!value) return 'Can\'t Empty';
+		if(!value) return 'Tidak boleh kosong';
 		return true;
 	}
 },
 {
 	type:'password',
 	name:'password',
-	message:'[>] Insert Password:',
+	message:'[>] Masukkan Password:',
 	mask:'*',
 	validate: function(value){
-		if(!value) return 'Can\'t Empty';
+		if(!value) return 'Tidak boleh kosong';
 		return true;
 	}
 },
 {
   type:'input',
   name:'mysyntx',
-  message:'[>] Input Total of Target You Want (ITTYW):',
+  message:'[>] Input Total Target yang kamu mau (ITTYW):',
   validate: function(value){
     value = value.match(/[0-9]/);
     if (value) return true;
-    return 'Use Number Only!';
+    return 'Hanya Gunakan Angka!';
   }
 },
 {
 	type:'input',
 	name:'sleep',
-	message:'[>] Insert Sleep (MiliSeconds):',
+	message:'[>] Masukkan Sleeptime (MiliSeconds):',
 	validate: function(value){
 		value = value.match(/[0-9]/);
 		if (value) return true;
@@ -112,9 +112,9 @@ const Unfollow = async function(session, accountId){
 
 const Excute = async function(User,sleep,mysyntx){
 	try {
-		console.log(chalk`\n{yellow [?] Try to Login . . .}`);
+		console.log(chalk`\n{yellow [?] Mencoba Login . . .}`);
 		const doLogin = await Login(User);
-		console.log(chalk`{green [!] Login Succsess}, {yellow [?] Try to get Followers and Following . . .}`);
+		console.log(chalk`{green [!] Login Berhasil}, {yellow [?] Mencari Followers dan Akun yang di Follow . . .}`);
 		const task = [
 		Followers(doLogin.session, doLogin.account.id),
 		Following(doLogin.session, doLogin.account.id)
@@ -147,16 +147,17 @@ const Excute = async function(User,sleep,mysyntx){
 console.log(chalk`
   {bold.cyan
   —————————————————— [INFORMATION] ————————————————————
-
   [?] {bold.green UFNFB | Unfollow Not FollowBack!}
+  [?] {bold.blue SUBSCRIBE YOUTUBE} {bold.cyan Daud Sanjaya}
 
   ——————————————————  [THANKS TO]  ————————————————————
+  [✓] SCRIPT BY DAUD SANJAYA (daudsti11@gmail.com)
   [✓] CODE BY CYBER SCREAMER CCOCOT (ccocot@bc0de.net)
   [✓] FIXING & TESTING BY SYNTAX (@officialputu_id)
   [✓] CCOCOT.CO | BC0DE.NET | NAONLAH.NET | WingkoColi
   [✓] SGB TEAM REBORN | Zerobyte.id | ccocot@bc0de.net 
   —————————————————————————————————————————————————————
-  What's new?
+  Apa yang baru?
   1. Input Target/delay Manual (ITTYW)
   —————————————————————————————————————————————————————}
       `);
