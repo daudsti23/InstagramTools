@@ -10,54 +10,54 @@ const User = [
 {
   type:'input',
   name:'username',
-  message:'[>] Insert Username:',
+  message:'[>] Masukkan Username:',
   validate: function(value){
-    if(!value) return 'Can\'t Empty';
+    if(!value) return 'Tidak boleh kosong';
     return true;
   }
 },
 {
   type:'password',
   name:'password',
-  message:'[>] Insert Password:',
+  message:'[>] Masukkan Password:',
   mask:'*',
   validate: function(value){
-    if(!value) return 'Can\'t Empty';
+    if(!value) return 'Tidak boleh kosong';
     return true;
   }
 },
 {
   type:'input',
   name:'target',
-  message:'[>] Insert Username Target (Without @[at]):',
+  message:'[>] Masukkan Username Target (Tanpa @[at]):',
   validate: function(value){
-    if(!value) return 'Can\'t Empty';
+    if(!value) return 'Tidak boleh kosong;
     return true;
   }
 },
 {
   type:'input',
   name:'text',
-  message:'[>] Insert Text Comment (Use [|] if more than 1):',
+  message:'[>] Masukkan Text Comment (Gunakan [|] jika lebih dari 1):',
   validate: function(value){
-    if(!value) return 'Can\'t Empty';
+    if(!value) return 'Tidak boleh kosong';
     return true;
   }
 },
 {
   type:'input',
   name:'mysyntx',
-  message:'[>] Input Total of Target You Want (ITTYW):',
+  message:'[>] Masukkan Total Target yang kamu mau (ITTYW):',
   validate: function(value){
     value = value.match(/[0-9]/);
     if (value) return true;
-    return 'Use Number Only!';
+    return 'Hanya Gunakan Angka!';
   }
 },
 {
   type:'input',
   name:'sleep',
-  message:'[>] Insert Sleep (MiliSeconds):',
+  message:'[>] Masukkam Sleeptime (MiliSeconds):',
   validate: function(value){
     value = value.match(/[0-9]/);
     if (value) return true;
@@ -93,7 +93,7 @@ const Target = async function(username){
     const data = S(account).between('<script type="text/javascript">window._sharedData = ', ';</script>').s
     const json = JSON.parse(data);
     if (json.entry_data.ProfilePage[0].graphql.user.is_private) {
-      return Promise.reject('Target is private Account');
+      return Promise.reject('Target menggunakan Privasi Akun');
     } else {
       const id = json.entry_data.ProfilePage[0].graphql.user.id;
       const followers = json.entry_data.ProfilePage[0].graphql.user.edge_followed_by.count;
@@ -179,13 +179,13 @@ const Followers = async function(session, id){
 
 const Excute = async function(User, TargetUsername, Text, Sleep, mysyntx){
   try {
-    console.log(chalk`{yellow \n [?] Try to Login . . .}`)
+    console.log(chalk`{yellow \n [?] Mencoba Login . . .}`)
     const doLogin = await Login(User);
-    console.log(chalk`{green  [!] Login Succsess, }{yellow [?] Try To Get ID & Followers Target . . .}`)
+    console.log(chalk`{green  [!] Login Berhasil, }{yellow [?] Try To Get ID & Followers Target . . .}`)
     const getTarget = await Target(TargetUsername);
     console.log(chalk`{green  [!] ${TargetUsername}: [${getTarget.id}] | Followers: [${getTarget.followers}]}`)
     const getFollowers = await Followers(doLogin.session, doLogin.account.id)
-    console.log(chalk`{cyan  [?] Try to Follow, Comment, and Like Followers Target . . . \n}`)
+    console.log(chalk`{cyan  [?] Mencoba untuk Follow, Comment, and Like Followers Target . . . \n}`)
     const Targetfeed = new Client.Feed.AccountFollowers(doLogin.session, getTarget.id);
     var TargetCursor;
     do {
@@ -201,7 +201,7 @@ const Excute = async function(User, TargetUsername, Text, Sleep, mysyntx){
             const ngeDo = await CommentAndLike(doLogin.session, akun.id, ranText)
             console.log(chalk`[{magenta ${timeNow}}] {bold.green [>]}${akun.params.username} => ${ngeDo}`)
           } else {
-            console.log(chalk`[{magenta ${timeNow}}] {bold.yellow [SKIP]}${akun.params.username} => PRIVATE OR ALREADY FOLLOWED`)
+            console.log(chalk`[{magenta ${timeNow}}] {bold.yellow [SKIP]}${akun.params.username} => PRIVATE ATAU SUDAH DIFOLLOW`)
           }
         }));
         console.log(chalk`{yellow \n [#][>] Delay For ${Sleep} MiliSeconds [<][#] \n}`);
@@ -219,16 +219,18 @@ const Excute = async function(User, TargetUsername, Text, Sleep, mysyntx){
 console.log(chalk`
   {bold.cyan
   —————————————————— [INFORMATION] ————————————————————
-
   [?] {bold.green FFTauto | Using Account/User Target!}
+  
+  [?] {bold.blue SUBSCRIBE YOUTUBE} {bold.cyan Daud Sanjaya}
 
   ——————————————————  [THANKS TO]  ————————————————————
+  [✓] SCRIPT BY DAUD SANJAYA (daudsti11@gmail.com)
   [✓] CODE BY CYBER SCREAMER CCOCOT (ccocot@bc0de.net)
   [✓] FIXING & TESTING BY SYNTAX (@officialputu_id)
   [✓] CCOCOT.CO | BC0DE.NET | NAONLAH.NET | WingkoColi
   [✓] SGB TEAM REBORN | Zerobyte.id | ccocot@bc0de.net 
   —————————————————————————————————————————————————————
-  What's new?
+  Apa yang baru?
   1. Input Target/delay Manual (ITTYW)
   —————————————————————————————————————————————————————}
       `);
