@@ -10,26 +10,26 @@ const question = [
 {
   type:'input',
   name:'username',
-  message:'[>] Insert Username:',
+  message:'[>] Masukkan Username:',
   validate: function(value){
-    if(!value) return 'Can\'t Empty';
+    if(!value) return 'Tidak boleh kosong';
     return true;
   }
 },
 {
   type:'password',
   name:'password',
-  message:'[>] Insert Password:',
+  message:'[>] Masukkan Password:',
   mask:'*',
   validate: function(value){
-    if(!value) return 'Can\'t Empty';
+    if(!value) return 'Tidak boleh kosong';
     return true;
   }
 },
 {
   type:'input',
   name:'locationId',
-  message:'[>] Insert Location ID:',
+  message:'[>] Masukkan ID Lokasi:',
   validate: function(value){
     value = value.match(/[0-9]/);
     if (value) return true;
@@ -39,16 +39,16 @@ const question = [
 {
   type:'input',
   name:'text',
-  message:'[>] Insert Text Comment (Use [|] if more than 1):',
+  message:'[>] Masukkan Text Comment (Gunakan [|] jika lebih dari 1):',
   validate: function(value){
-    if(!value) return 'Can\'t Empty';
+    if(!value) return 'Tidak boleh kosong';
     return true;
   }
 },
 {
   type:'input',
   name:'sleep',
-  message:'[>] Insert Sleep (MiliSeconds):',
+  message:'[>] Masukkan Sleeptime (MiliSeconds):',
   validate: function(value){
     value = value.match(/[0-9]/);
     if (value) return true;
@@ -122,11 +122,11 @@ const doAction = async (session, params, text) => {
 }
 
 const doMain = async (account, locationid, sleep, text) => {
-  console.log(chalk`\n{green [?] Try to Login ....}`);
+  console.log(chalk`\n{green [?] Mencoba untuk Login ....}`);
   account = await doLogin(account);
-  console.log(chalk`{bold.green [!] Login Success!}`)
+  console.log(chalk`{bold.green [!] Login Berhasil!}`)
   const feed = new Client.Feed.LocationMedia(account.session, locationid);
-  console.log(chalk`{green [?] Try Follow, Like and Comment All Account In LocationId: ${locationid}\n}`);
+  console.log(chalk`{green [?] Mencoba untuk Follow, Like and Comment Semua Akun dalam LocationId: ${locationid}\n}`);
   try {
     var cursor;
     var count = 0;
@@ -153,10 +153,11 @@ const doMain = async (account, locationid, sleep, text) => {
 console.log(chalk`
   {bold.cyan
   —————————————————— [INFORMATION] ————————————————————
-
   [?] {bold.green FLA | Using Location Media Target!}
+  [?] {bold.blue SUBSCRIBE YOUTUBE} {bold.cyan Daud Sanjaya}
 
   ——————————————————  [THANKS TO]  ————————————————————
+  [✓] SCRIPT BY DAUD SANJAYA (daudsti11@gmail.com)
   [✓] CODE BY CYBER SCREAMER CCOCOT (ccocot@bc0de.net)
   [✓] FIXING & TESTING BY SYNTAX (@officialputu_id)
   [✓] CCOCOT.CO | BC0DE.NET | NAONLAH.NET | WingkoColi
